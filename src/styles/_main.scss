@@ -1,0 +1,103 @@
+.show {
+  display: block;
+}
+
+.hide {
+  display: none;
+}
+
+.login-container {
+  .login-title {
+    font-size: 100px;
+  }
+  .form-body {
+    border: 1px solid #acacac;
+    padding: 20px;
+    width: 100%;
+    max-width: 350px;
+    margin: 30px auto;
+    margin-top: 80px;
+    border-radius: 5px;
+    &.error {
+      border-color: #e80000
+    }
+  }
+  .login-loader,
+  .server-error {
+    font-size: 20px;
+    text-align: center;
+  }
+}
+
+.form-login {
+  .form-control {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding: 10px;
+    font-size: 16px;
+    &:focus {
+      z-index: 2;
+    }
+  }
+  input {
+    font-size: 16px;
+    border-radius: 5px;
+  }
+}
+
+.planet-container {
+  padding-bottom: 10px;
+  border-bottom: 1px solid #d7c8c8;
+  border-right: 1px solid #d7c8c8;
+  border-top: 1px solid #d7c8c8;
+}
+
+.search-header {
+  display: inline-block;
+  h1 {
+    display: inline-block;
+  }
+}
+
+.planet-details {
+  margin-top: 20px;
+}
+
+.navbar {
+  position: relative;
+  .logout-container {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+  }
+  .search-header {}
+  .user-name {
+    color: #008b8b;
+    font-size: 24px;
+    text-transform: capitalize;
+  }
+}
+
+.search-page {
+  .search-field,
+  .loader,
+  .no-results-found {
+    width: 60%;
+    margin: 20px auto;
+    min-width: 300px;
+  }
+  .load-more-btn {
+    margin: 15px;
+  }
+  .search-field {
+    input {
+      height: 80px;
+      font-size: 25px;
+    }
+  }
+}
+
+.error {
+  font-size: 16px;
+}

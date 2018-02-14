@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Search from './search';
-import * as SearchActions from './Actions';
+import * as searchActions from './searchActions';
 
 const mapStateToProps = state => {
   return {
@@ -10,15 +10,17 @@ const mapStateToProps = state => {
     fetching: state.search.fetching,
     userName: state.login.loggedInUser.name.toLowerCase(),
     searchCount: state.search.searchCount,
-    nextUrl: state.search.nextUrl
+    nextUrl: state.search.nextUrl,
+    searchLimitFlag: state.search.searchLimitFlag
   }
 }
 
 const mapDispatchToProps = {
-  fetchPlanets: SearchActions.fetchPlanets,
-  increaseSearchCount: SearchActions.increaseSearchCount,
-  resetSearchCount: SearchActions.resetSearchCount,
-  fetchMorePlanets: SearchActions.fetchMorePlanets
+  fetchPlanets: searchActions.fetchPlanets,
+  increaseSearchCount: searchActions.increaseSearchCount,
+  resetSearchCount: searchActions.resetSearchCount,
+  searchPlanets: searchActions.searchPlanets,
+  fetchMorePlanets: searchActions.fetchMorePlanets,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Search);

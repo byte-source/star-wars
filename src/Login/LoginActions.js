@@ -1,23 +1,29 @@
+import * as Actions from './loginActionTypes';
+
 export const loginSuccess = (payload) => (
   {
-    type: 'LOGIN_SUCCESS',
+    type: Actions.LOGIN_SUCCESS,
     payload: payload
   }
 );
 
 export const setUserData = (userData) => ({
-  type: 'SET_USER_DATA',
+  type: Actions.SET_USER_DATA,
   payload: userData
 });
 
 export const loginFail = () => ({
-  type: 'LOGIN_FAIL'
+  type: Actions.LOGIN_FAIL
 });
 
 export const loading = () => ({
-  type: 'LOADING'
+  type: Actions.LOADING
 });
 
 export const loaded = () => ({
-  type: 'LOADED'
+  type: Actions.LOADED
+});
+
+export const clearLoginDetails = () => ({
+  type: Actions.CLEAR_LOGIN_DETAILS
 });

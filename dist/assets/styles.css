@@ -6081,7 +6081,6 @@ a.text-dark:hover, a.text-dark:focus {
 .navbar {
   position: relative; }
   .navbar .logout-container {
-    position: absolute;
     right: 10px;
     display: inline-block; }
   .navbar .user-name {

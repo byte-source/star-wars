@@ -1,13 +1,13 @@
 import './styles/app.scss';
 import React, { Component } from 'react';
 import { render } from 'react-dom';
-// import PropTypes from 'prop-types'
 import { BrowserRouter as Router, Route, Link, IndexRoute, browserHistory, Switch, Redirect } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import Login from './Login/components/login';
 import Search from './Search/searchContainer';
 import NotFound from './NotFound';
 import appStore from './appStore';
+import isAuthorised from './common/isAuthorised';
 
 
 class App extends Component {
@@ -17,16 +17,11 @@ class App extends Component {
     return (
       <Provider store={appStore}>
         <Router history={browserHistory}>
-          <div className="container-fluid">{/* 
-            <ul>
-              <li><Link to="/login">Login</Link></li>
-              <li><Link to="/search">search</Link></li>
-            </ul> */}
-
+          <div className="container-fluid">
             <Switch>
               <Route exact path="/" component={Login} />
               <Route path="/login" component={Login} />
-              <Route path="/search" component={Search} />
+              <Route path="/search" component={isAuthorised(Search)} />
               <Route component={NotFound} />
             </Switch>
           </div>

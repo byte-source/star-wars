@@ -3,7 +3,7 @@ import * as Actions from './LoginActions';
 import axios from 'axios';
 import config from '../common/config';
 import { errorMessages } from "../common/labels";
-
+import { resetSearchState } from '../Search/searchActions'
 const fetchPeople = (name) => axios.get(config.loginUrl + name);
 
 const loginHandler = (values, dispatch, props) => {
@@ -32,6 +32,7 @@ const loginHandler = (values, dispatch, props) => {
     if (userExists) {
       dispatch(Actions.loginSuccess(userExists));
       dispatch(Actions.setUserData(loggedInUser));
+      dispatch(resetSearchState());
       props.history.push('/search');
     } else {
       throw new SubmissionError({

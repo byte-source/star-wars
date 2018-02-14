@@ -1,13 +1,11 @@
 import { combineReducers } from 'redux';
 import formReducer, { loginReducer } from './Login/loginReducer';
 import searchReducer from './Search/searchReducer';
-import logoutReducer from './Logout/logoutReducer';
 
 const rootReducer = combineReducers({
   login: loginReducer,
   form: formReducer,
-  search: searchReducer,
-  logout: logoutReducer
+  search: searchReducer
 });
 
 

@@ -1,3 +1,5 @@
+import * as Actions from "./searchActionTypes";
+
 let user = {};
 if (typeof (Storage) !== "undefined" && sessionStorage.length) {
   user = JSON.parse(sessionStorage.getItem("user"));
@@ -10,43 +12,52 @@ const INITIAL_STATE = {
   searchCount: 0,
   fetchError: false,
   userName: null,
-  nextUrl: null
+  nextUrl: null,
+  searchLimitFlag: false
 }
 
 const searchReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'SET_ALL_PLANETS':
+    case Actions.SET_ALL_PLANETS:
       state = Object.assign({}, state, {
         planets: action.payload,
         fetchError: false
       });
       break;
-    case 'INCREASE_SEARCH_COUNT':
+    case Actions.INCREASE_SEARCH_COUNT:
       state = Object.assign({}, state, { searchCount: ++state.searchCount });
       break;
-    case 'RESET_SEARCH_COUNT':
+    case Actions.RESET_SEARCH_COUNT:
       state = Object.assign({}, state, { searchCount: 0 });
       break;
 
-    case 'SET_SEARCH_TERM':
+    case Actions.SET_SEARCH_TERM:
       state = Object.assign({}, state, { searchTerm: action.payload });
       break;
 
-    case 'FETCHING_FAILED':
+    case Actions.FETCHING_FAILED:
       state = Object.assign({}, state, { fetchError: true });
       break;
 
-    case 'SET_NEXT_URL':
+    case Actions.SET_NEXT_URL:
       state = Object.assign({}, state, { nextUrl: action.payload });
       break;
 
-    case 'APPEND_NEXT_PLANETS':
+    case Actions.APPEND_NEXT_PLANETS:
       const totalPlanets = state.planets.concat(action.payload)
       state = Object.assign({}, state, { planets: totalPlanets });
       break;
 
-    case 'FETCHING':
+    case Actions.FETCHING:
       state = Object.assign({}, state, { fetching: action.payload });
+      break;
+
+    case Actions.SET_SEARCH_LIMIT_FLAG:
+      state = Object.assign({}, state, { searchLimitFlag: action.payload });
+      break;
+
+    case Actions.RESET_SEARCH_STATE:
+      state = Object.assign({}, state, INITIAL_STATE);
       break;
   }
 

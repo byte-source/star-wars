@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { appReducer } from '../rootReducer';
+import { clearLoginDetails } from '../Login/LoginActions';
+
 class Logout extends Component {
   constructor(props) {
     super(props);
@@ -8,39 +11,8 @@ class Logout extends Component {
   }
 
   logoutHandler() {
-    sessionStorage.clear();
-    appReducer(null, {
-      type: 'USER_LOGOUT'
-    });
-    //this.props.logOut();
-    const that = this;
-    /* const promise = new Promise((resolve, reject) => {
-      sessionStorage.clear();
-      this.props.clearState();
-      if (sessionStorage.getItem('user') === null && that.props.login === undefined) {
-        console.log('resolve');
-        resolve();
-      } else {
-        console.log('reject');
-        reject();
-      }
-    });
-
-    promise.then(() => {
-      this.props.history.push('/login');
-    }).catch((error) => {
-      debugger;
-    }); */
-
-    // sessionStorage.clear();
-    // this.props.clearState();
-    // if (sessionStorage.getItem('user') === null && this.props.login === undefined) {
-    //   console.log('resolve');
-    //   this.props.history.push('/login');
-    // } else {
-    //   console.log('reject');
-    //   //reject();
-    // }
+    this.props.clearLoginDetails();
+    this.props.history.push('/login');
   }
 
   render() {
@@ -54,4 +26,7 @@ class Logout extends Component {
   }
 }
 
-export default withRouter(Logout);
+const mapDispatchToProps = {
+  clearLoginDetails
+};
+export default connect(null, mapDispatchToProps)(withRouter(Logout));

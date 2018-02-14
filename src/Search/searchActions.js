@@ -1,43 +1,58 @@
 import axios from 'axios';
 import config from '../common/config';
+import * as Actions from './searchActionTypes'
 
 export const setSearchTerm = (value) => ({
-  type: 'SET_SEARCH_TERM',
+  type: Actions.SET_SEARCH_TERM,
   payload: value
 });
 
 export const setAllPlanets = (value) => ({
-  type: 'SET_ALL_PLANETS',
+  type: Actions.SET_ALL_PLANETS,
+  payload: value
+});
+export const searchLimitFlag = (value) => ({
+  type: Actions.SET_SEARCH_LIMIT_FLAG,
   payload: value
 });
 
 export const fetching = (flag) => ({
-  type: 'FETCHING',
+  type: Actions.FETCHING,
   payload: flag
 })
 
 export const fetchingFailed = (error) => ({
-  type: 'FETCHING_FAILED',
+  type: Actions.FETCHING_FAILED,
   payload: error
 })
 
 export const increaseSearchCount = () => ({
-  type: 'INCREASE_SEARCH_COUNT'
+  type: Actions.INCREASE_SEARCH_COUNT
 });
 
 export const resetSearchCount = () => ({
-  type: 'RESET_SEARCH_COUNT'
+  type: Actions.RESET_SEARCH_COUNT
 });
 
 export const setNextPlanetsUrl = (url) => ({
-  type: 'SET_NEXT_URL',
+  type: Actions.SET_NEXT_URL,
   payload: url
 });
 
 export const appendNextPlanets = (nextPlanets) => ({
-  type: 'APPEND_NEXT_PLANETS',
+  type: Actions.APPEND_NEXT_PLANETS,
   payload: nextPlanets
 });
+
+export const searchPlanets = (searchValue) => ({
+  type: Actions.SEARCH_PLANETS,
+  payload: searchValue,
+  searchPromise: search
+})
+
+export const resetSearchState = () => ({
+  type: Actions.RESET_SEARCH_STATE
+})
 
 export const fetchPlanets = (planetName) => {
 

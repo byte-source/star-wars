@@ -1,4 +1,5 @@
 import { reducer as formReducer } from 'redux-form';
+import * as Actions from './loginActionTypes';
 
 let user = {};
 if (typeof (Storage) !== "undefined" && sessionStorage.length) {
@@ -9,22 +10,32 @@ const INITIAL_STATE = {
   loggedInUser: user.details,
   loading: false
 }
+
+const RESET_STATE = {
+  loggedIn: false,
+  loggedInUser: null,
+  loading: false
+}
 export const loginReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
-    case 'LOGIN_SUCCESS':
+    case Actions.LOGIN_SUCCESS:
       state = Object.assign({}, state, { loggedIn: true });
       break;
 
-    case 'SET_USER_DATA':
+    case Actions.SET_USER_DATA:
       state = Object.assign({}, state, { loggedInUser: action.payload });
       break;
 
-    case 'LOADING':
+    case Actions.LOADING:
       state = Object.assign({}, state, { loading: true });
       break;
 
-    case 'LOADED':
+    case Actions.LOADED:
       state = Object.assign({}, state, { loading: false });
+      break;
+
+    case Actions.CLEAR_LOGIN_DETAILS:
+      state = Object.assign({}, state, RESET_STATE);
       break;
 
     default:

@@ -51,7 +51,7 @@ export default class Search extends Component {
     const res = [];
     const elm = this.props.searchTerm;
     let maxDiameter = 0;
-    if (planets.length > 0) {
+    if (planets && planets.length > 0) {
 
       for (let i = 0; i < planets.length; i++) {
         const dm = parseInt(planets[i].diameter) || 0;

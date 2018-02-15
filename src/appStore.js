@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import planetSearchMiddleWare from './search/searchMiddleware'
 
-const middleware = applyMiddleware(thunk, planetSearchMiddleWare);
+const middleware = applyMiddleware(planetSearchMiddleWare, thunk);
 const store = createStore(
   rootReducer,
   composeWithDevTools(middleware)

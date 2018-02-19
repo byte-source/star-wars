@@ -1,5 +1,6 @@
 # Welcome to Star wars!
-Star wars fun app using https://swapi.co/
+React and Redux based 
+Star wars fun app using https://swapi.co/ 
 
 # Install
 	clone the repo
